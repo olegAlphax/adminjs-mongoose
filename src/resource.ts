@@ -3,7 +3,6 @@ import mongoose from 'mongoose'
 import { get } from 'lodash'
 import { FindOptions } from './utils/filter.types'
 import Property from './property'
-import { convertFilter } from './utils/convert-filter'
 import { createValidationError } from './utils/create-validation-error'
 import { createDuplicateError } from './utils/create-duplicate-error'
 import { createCastError } from './utils/create-cast-error'
@@ -67,8 +66,8 @@ class Resource extends BaseResource {
     }
 
     async count(filters = null) {
-      if (Object.keys(convertFilter(filters)).length > 0) {
-        return this.MongooseModel.count(convertFilter(filters))
+      if (Object.keys(filters).length > 0) {
+        return this.MongooseModel.count(filters)
       }
       return this.MongooseModel.estimatedDocumentCount()
     }
@@ -79,7 +78,7 @@ class Resource extends BaseResource {
         [sortBy]: direction,
       }
       const mongooseObjects = await this.MongooseModel
-        .find(convertFilter(filters), {}, {
+        .find(filters, {}, {
           skip: offset, limit, sort: sortingParam,
         })
       return mongooseObjects.map(mongooseObject => new BaseRecord(
