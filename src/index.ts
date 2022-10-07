@@ -7,3 +7,4 @@
 
 export { default as Resource } from './resource'
 export { default as Database } from './database'
+export { convertFilter } from './utils/convert-filter'
