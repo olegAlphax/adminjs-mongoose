@@ -4,7 +4,7 @@ This is an official [AdminJS](https://github.com/SoftwareBrothers/adminjs) adapt
 
 ## OpenSource SoftwareBrothers community
 
-- [Join the community](https://join.slack.com/t/adminbro/shared_invite/zt-czfb79t1-0U7pn_KCqd5Ts~lbJK0_RA) to get help and be inspired.
+- [Join the community](https://join.slack.com/t/adminbro/shared_invite/zt-czfb79t1-0U7pn_KCqd5Ts~lbJK0_RA) to get help and be inspired!
 
 ## Usage
 
