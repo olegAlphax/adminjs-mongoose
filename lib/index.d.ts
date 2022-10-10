@@ -1,3 +1,4 @@
 import Database from './src/database';
 import Resource from './src/resource';
-export { Database, Resource };
+import { convertFilter } from './src';
+export { Database, Resource, convertFilter };
