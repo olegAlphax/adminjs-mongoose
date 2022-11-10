@@ -72,13 +72,13 @@ class Resource extends BaseResource {
       return this.MongooseModel.estimatedDocumentCount()
     }
 
-    async find(filters = {}, { limit = 20, offset = 0, sort = {} }: FindOptions) {
+    async find(filters = {}, { limit = 20, offset = 0, sort = {} }: FindOptions, projection = {}) {
       const { direction, sortBy } = sort
       const sortingParam = {
         [sortBy]: direction,
       }
       const mongooseObjects = await this.MongooseModel
-        .find(filters, {}, {
+        .find(filters, projection, {
           skip: offset, limit, sort: sortingParam,
         })
       return mongooseObjects.map(mongooseObject => new BaseRecord(
