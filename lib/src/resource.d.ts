@@ -29,8 +29,8 @@ declare class Resource extends BaseResource {
     property(name: string): Property;
     count(filters?: any): Promise<number>;
     find(filters: {}, { limit, offset, sort }: FindOptions, projection?: {}): any;
-    findOne(id: string): Promise<BaseRecord>;
-    findMany(ids: string[]): Promise<BaseRecord[]>;
+    findOne(id: string, projection?: any): Promise<BaseRecord>;
+    findMany(ids: string[], projection?: any): Promise<BaseRecord[]>;
     build(params: any): BaseRecord;
     create(params: any): Promise<any>;
     update(id: any, params: any): Promise<any>;
