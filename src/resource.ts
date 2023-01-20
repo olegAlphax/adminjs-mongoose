@@ -86,15 +86,15 @@ class Resource extends BaseResource {
       ))
     }
 
-    async findOne(id:string) {
-      const mongooseObject = await this.MongooseModel.findById(id)
+    async findOne(id:string, projection: any = {}) {
+      const mongooseObject = await this.MongooseModel.findById(id, projection)
       return new BaseRecord(Resource.stringifyId(mongooseObject), this)
     }
 
-    async findMany(ids: string[]) {
+    async findMany(ids: string[], projection: any = {}) {
       const mongooseObjects = await this.MongooseModel.find(
         { _id: ids },
-        {},
+        { ... projection },
       )
       return mongooseObjects.map(mongooseObject => (
         new BaseRecord(Resource.stringifyId(mongooseObject), this)
